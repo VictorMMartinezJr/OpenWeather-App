@@ -1,0 +1,72 @@
+.details_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.details_header {
+  text-align: center;
+  margin-top: 1rem;
+}
+.details_city {
+  font-size: 2rem;
+}
+.details_weather_description {
+  margin-bottom: 1rem;
+}
+.details_img {
+  height: 150px;
+  filter: drop-shadow(0 0 10px #73777b);
+}
+.details_weather_info_container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.5rem;
+}
+.detail_weather_info_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.detail_weather_info_img {
+  height: 20px;
+}
+.detail_weather_info_text {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.details_weather_info_temp {
+  font-size: 4rem;
+  margin: 0 2rem 0 2rem;
+  position: relative;
+}
+.degrees-icon {
+  font-size: 2.5rem;
+  position: absolute;
+  top: 5px;
+  right: -15px;
+  font-weight: 600;
+}
+.detail_weather_info_indicator {
+  padding: 0.2rem 0.5rem;
+  width: 80px;
+  background-color: #f1e9ab;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+  color: #d1be40;
+  margin: 1rem 0 0.5rem 0;
+}
+.detail_weather_info_indicator--humidity.low {
+  background-color: rgba(11, 127, 171, 0.2);
+  color: #0078aa;
+}
+.detail_weather_info_indicator--humidity.high {
+  background-color: rgba(189, 155, 25, 0.2);
+  color: #ecc100;
+}

@@ -1,10 +1,11 @@
 import "./Main.css";
 import Navbar from "../Navbar";
+import CityDetails from "../CityDetails";
 const Main = () => {
   return (
     <main id="main">
       <Navbar />
-      <h1>Main</h1>
+      <CityDetails />
     </main>
   );
 };
