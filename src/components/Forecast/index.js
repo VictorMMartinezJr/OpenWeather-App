@@ -1,37 +1,9 @@
 import "./Forecast.css";
+import checkWeather from "../util/CheckWeather";
 import { useEffect, useState } from "react";
-import cloudSVG from "../../assets/clouds.svg";
-import rainSVG from "../../assets/raining.svg";
-import thunderSVG from "../../assets/thunder.svg";
-import sunSVG from "../../assets/sun.svg";
-import snowflakeSVG from "../../assets/snowflake.svg";
 
 const Forecast = () => {
   const [forecast, setForecast] = useState("");
-
-  //////////////////////////////////////////////////
-  // check what weather code is returned from API //
-  //////////////////////////////////////////////////
-  const checkWeather = (code) => {
-    if (code >= 200 && code < 300) {
-      return thunderSVG;
-    }
-    if (code < 600) {
-      return rainSVG;
-    }
-    if (code >= 600 && code < 700) {
-      return snowflakeSVG;
-    }
-    if (code >= 700 && code < 799) {
-      return rainSVG;
-    }
-    if (code === 800) {
-      return sunSVG;
-    }
-    if (code >= 801) {
-      return cloudSVG;
-    }
-  };
 
   //////////////////////////////////
   // Fetch Forecast data from API //
@@ -58,7 +30,6 @@ const Forecast = () => {
     <section id="forecast_container">
       {forecast &&
         forecast.map((day, i) => {
-          console.log(day);
           return (
             <div key={i} className="forecast_card">
               <img

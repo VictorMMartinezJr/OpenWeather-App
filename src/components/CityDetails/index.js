@@ -1,16 +1,18 @@
 import "./CityDetails.css";
-import wind from "../../assets/wind.svg";
-import cloud from "../../assets/clouds.svg";
 import { useEffect, useState } from "react";
+import checkWeather from "../util/CheckWeather";
+import wind from "../../assets/wind.svg";
 
 const CityDetails = () => {
   const [city, setCity] = useState("");
   const [weatherDescription, setWeatherDescription] = useState("");
   const [temp, setTemp] = useState("");
+  const [weatherCode, setWeatherCode] = useState("");
   const [weatherType, setWeatherType] = useState("");
   const [windSpeed, setWindSpeed] = useState("");
   const [humidity, setHumidity] = useState("");
   const [pressure, setPressure] = useState("");
+  const [time, setTime] = useState("");
 
   const capitalizeLetter = (str) => {
     return str.slice(0, 1).toUpperCase() + str.slice(1);
@@ -29,13 +31,17 @@ const CityDetails = () => {
       );
       const data = await resp.json();
       setCity(data.name);
+      setWeatherCode(data.weather[0].id);
       setWeatherDescription(capitalizeLetter(data.weather[0].description));
       setTemp(Math.floor(data.main.temp));
       setWindSpeed(Math.floor(data.wind.speed));
       setWeatherType(data.weather[0].main);
       setHumidity(data.main.humidity);
       setPressure(insertDecimal(data.main.pressure));
-    } catch (error) {}
+      setTime(data.weather[0].icon);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
@@ -47,12 +53,16 @@ const CityDetails = () => {
       <div className="details_header">
         <h1 className="details_city">{city}</h1>
         <p className="details_weather_description">{weatherDescription}</p>
-        <img src={cloud} alt="" className="details_img" />
+        <img
+          src={checkWeather(weatherCode, time)}
+          alt=""
+          className="details_img"
+        />
       </div>
       <div className="details_weather_info_container">
         <div className="detail_weather_info_container">
           <img
-            src={cloud}
+            src={checkWeather(weatherCode, time)}
             alt="wind icon"
             className="detail_weather_info_img"
           />
