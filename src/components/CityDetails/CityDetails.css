@@ -7,7 +7,6 @@
 }
 .details_header {
   text-align: center;
-  margin-top: 1rem;
 }
 .details_city {
   font-size: 2rem;
@@ -16,8 +15,8 @@
   margin-bottom: 1rem;
 }
 .details_img {
-  height: 150px;
-  filter: drop-shadow(0 0 10px #73777b);
+  height: 120px;
+  position: relative;
 }
 .details_weather_info_container {
   width: 100%;
@@ -47,7 +46,7 @@
 .degrees-icon {
   font-size: 2.5rem;
   position: absolute;
-  top: 5px;
+  top: 15px;
   right: -15px;
   font-weight: 600;
 }
