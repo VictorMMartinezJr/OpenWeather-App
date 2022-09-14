@@ -3,5 +3,5 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: linear-gradient(to bottom, #fff, #c3e5f1, #fff, #c3e5f1);
+  background: linear-gradient(to bottom, #c3e5f1, #fff, #c3e5f1);
 }

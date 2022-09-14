@@ -3,35 +3,38 @@ import searchIcon from "../../assets/search-icon.svg";
 import { useState } from "react";
 
 const Navbar = () => {
-  const [navActive, setNavActive] = useState(false);
+  const [searchActive, setSearchActive] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
 
-  const handleBurgerClick = () => {
-    setNavActive(!navActive);
+  const handleSearchClick = (e) => {
+    e.preventDefault();
+    setSearchActive(!searchActive);
+    if (!searchActive) {
+      setSearchValue("");
+    }
   };
   return (
     <nav id="navbar">
-      <div className="nav_burger" onClick={handleBurgerClick}>
-        <div
-          className={`nav_burger_line nav_burger_line--1 ${
-            navActive ? "active" : ""
+      <form className="navbar__search__form">
+        <button
+          className="navbar__search__form__btn"
+          onClick={handleSearchClick}
+        >
+          <img
+            src={searchIcon}
+            alt="Gray search icon"
+            className="navbar__search__form__icon"
+          />
+        </button>
+        <input
+          className={`navbar__search__form__input ${
+            searchActive ? "active" : ""
           }`}
-        ></div>
-        <div
-          className={`nav_burger_line nav_burger_line--2 ${
-            navActive ? "active" : ""
-          }`}
-        ></div>
-        <div
-          className={`nav_burger_line nav_burger_line--3 ${
-            navActive ? "active" : ""
-          }`}
-        ></div>
-      </div>
-      <img
-        src={searchIcon}
-        alt="Gray search icon"
-        className="nav_search_icon"
-      />
+          placeholder="Search for a city"
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
+        />
+      </form>
     </nav>
   );
 };

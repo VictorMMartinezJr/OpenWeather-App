@@ -21,7 +21,7 @@ const checkWeather = (code, time) => {
   if (code >= 700 && code < 799) {
     return rainSVG;
   }
-  if (code >= 801) {
+  if (code === 801) {
     return fewCloudSVG;
   }
   if (code >= 802) {
