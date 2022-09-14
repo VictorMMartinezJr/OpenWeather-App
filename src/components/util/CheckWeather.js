@@ -1,4 +1,5 @@
 import cloudSVG from "../../assets/clouds.svg";
+import fewCloudSVG from "../../assets/few-clouds.svg";
 import rainSVG from "../../assets/raining.svg";
 import thunderSVG from "../../assets/thunder.svg";
 import sunSVG from "../../assets/sun.svg";
@@ -20,14 +21,17 @@ const checkWeather = (code, time) => {
   if (code >= 700 && code < 799) {
     return rainSVG;
   }
+  if (code >= 801) {
+    return fewCloudSVG;
+  }
+  if (code >= 802) {
+    return cloudSVG;
+  }
+
   if (time && time.includes("n") && code === 800) {
     return cloudSVG;
   } else {
     return sunSVG;
-  }
-
-  if (code >= 801) {
-    return cloudSVG;
   }
 };
 

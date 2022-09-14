@@ -30,6 +30,7 @@ const CityDetails = () => {
         `https://api.openweathermap.org/data/2.5/weather?q=atlanta&appid=${process.env.REACT_APP_API_KEY}&units=imperial`
       );
       const data = await resp.json();
+      console.log(data);
       setCity(data.name);
       setWeatherCode(data.weather[0].id);
       setWeatherDescription(capitalizeLetter(data.weather[0].description));
