@@ -27,13 +27,15 @@ const Forecast = () => {
     }
   }, [weatherForecastData]);
 
-  // Safari && IE Date bug solution
-  const fixDateForAllBrowsers = (dateString) => dateString.replace(/-/g, "/");
-
   return (
     <section id="forecast_container">
       {forecastData &&
         forecastData.map((day, i) => {
+          // Safari && IE Date bug solution
+          let forecastDay = new Date(day.dt_txt.replace(/-/g, "/"))
+            .toString()
+            .slice(0, 3);
+
           return (
             <div key={i} className="forecast_card">
               <img
@@ -42,11 +44,7 @@ const Forecast = () => {
                 className="forecast_card_img"
               />
               <p className="forecast_card_temp">{Math.floor(day.main.temp)}°</p>
-              <p className="forecast_card_day">
-                {fixDateForAllBrowsers(
-                  new Date(day.dt_txt).toString().slice(0, 3)
-                )}
-              </p>
+              <p className="forecast_card_day">{forecastDay}</p>
             </div>
           );
         })}
