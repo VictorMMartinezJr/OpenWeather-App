@@ -8,22 +8,34 @@ export const WeatherProvider = ({ children }) => {
   const [url, setUrl] = useState(
     `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_API_KEY}&units=imperial`
   );
+  const [error, setError] = useState(false);
 
   ///////////////////////
   // Fetch The weather //
   ///////////////////////
-  const getWeather = async () => {
-    const resp = await fetch(url);
-    const data = await resp.json();
-    setWeatherData(data);
+  const fetchWeather = async () => {
+    try {
+      const resp = await fetch(url);
+      if (resp.ok) {
+        const data = await resp.json();
+        setWeatherData(data);
+        error && setError(false); // Clear Error if error is active
+      } else {
+        setError(true);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
-    getWeather();
+    fetchWeather();
   }, [city, url]);
 
   return (
-    <WeatherContext.Provider value={{ weatherData, setCity, url, setUrl }}>
+    <WeatherContext.Provider
+      value={{ weatherData, setCity, url, setUrl, error }}
+    >
       {children}
     </WeatherContext.Provider>
   );

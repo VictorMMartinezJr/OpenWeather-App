@@ -2,13 +2,16 @@ import "./Main.css";
 import Navbar from "../Navbar";
 import CityDetails from "../CityDetails";
 import Forecast from "../Forecast";
+import { WeatherProvider } from "../WeatherContext";
 const Main = () => {
   return (
-    <main id="main">
-      <Navbar />
-      <CityDetails />
-      <Forecast />
-    </main>
+    <WeatherProvider>
+      <main id="main">
+        <Navbar />
+        <CityDetails />
+        <Forecast />
+      </main>
+    </WeatherProvider>
   );
 };
 

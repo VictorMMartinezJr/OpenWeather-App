@@ -1,5 +1,6 @@
 import "./CityDetails.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { WeatherContext } from "../WeatherContext";
 import checkWeather from "../util/CheckWeather";
 import wind from "../../assets/wind.svg";
 
@@ -14,6 +15,8 @@ const CityDetails = () => {
   const [pressure, setPressure] = useState("");
   const [time, setTime] = useState("");
 
+  const { weatherData } = useContext(WeatherContext);
+
   const capitalizeLetter = (str) => {
     return str.slice(0, 1).toUpperCase() + str.slice(1);
   };
@@ -21,33 +24,32 @@ const CityDetails = () => {
     return (+num / 100).toFixed(2);
   };
 
-  ///////////////////////
-  // Fetch The weather //
-  ///////////////////////
-  const getWeather = async () => {
+  /////////////////////
+  // Set The weather //
+  /////////////////////
+  const setWeather = () => {
     try {
-      const resp = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=atlanta&appid=${process.env.REACT_APP_API_KEY}&units=imperial`
+      setWeatherCode(weatherData.weather[0].id);
+      setCity(weatherData.name);
+      setWeatherDescription(
+        capitalizeLetter(weatherData.weather[0].description)
       );
-      const data = await resp.json();
-      console.log(data);
-      setCity(data.name);
-      setWeatherCode(data.weather[0].id);
-      setWeatherDescription(capitalizeLetter(data.weather[0].description));
-      setTemp(Math.floor(data.main.temp));
-      setWindSpeed(Math.floor(data.wind.speed));
-      setWeatherType(data.weather[0].main);
-      setHumidity(data.main.humidity);
-      setPressure(insertDecimal(data.main.pressure));
-      setTime(data.weather[0].icon);
+      setTemp(Math.floor(weatherData.main.temp));
+      setWindSpeed(Math.floor(weatherData.wind.speed));
+      setWeatherType(weatherData.weather[0].main);
+      setHumidity(weatherData.main.humidity);
+      setPressure(insertDecimal(weatherData.main.pressure));
+      setTime(weatherData.weather[0].icon);
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    getWeather();
-  }, []);
+    if (weatherData.length !== 0) {
+      setWeather();
+    }
+  }, [weatherData]);
 
   return (
     <section className="details_container">
