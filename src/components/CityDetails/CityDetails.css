@@ -2,14 +2,17 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
+  flex: 2;
 }
+/** Header **/
 .details_header {
   text-align: center;
 }
 .details_city {
   font-size: 2rem;
+  font-weight: 400;
 }
 .details_weather_description {
   margin-bottom: 1rem;
@@ -18,12 +21,12 @@
   height: 120px;
   position: relative;
 }
+/** Main Info **/
 .details_weather_info_container {
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 0.5rem;
 }
 .detail_weather_info_container {
   display: flex;
@@ -33,6 +36,7 @@
 }
 .detail_weather_info_img {
   height: 20px;
+  margin-bottom: 0.3rem;
 }
 .detail_weather_info_text {
   font-size: 0.8rem;
@@ -53,12 +57,10 @@
 .detail_weather_info_indicator {
   padding: 0.2rem 0.5rem;
   width: 80px;
-  background-color: #f1e9ab;
   border-radius: 20px;
   font-size: 0.8rem;
   font-weight: 600;
   text-align: center;
-  color: #d1be40;
   margin: 1rem 0 0.5rem 0;
 }
 .detail_weather_info_indicator--humidity.low {
@@ -68,4 +70,53 @@
 .detail_weather_info_indicator--humidity.high {
   background-color: rgba(189, 155, 25, 0.2);
   color: #ecc100;
+}
+
+/** Media Queries **/
+@media screen and (min-width: 375px) {
+  .details_city {
+    font-size: 2.5rem;
+  }
+  .details_weather_description {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (min-width: 390px) {
+  .details_city {
+    font-size: 3rem;
+  }
+  .detail_weather_info_img {
+    height: 30px;
+  }
+  .detail_weather_info_indicator {
+    width: 100px;
+    font-size: 1rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .details_city {
+    font-size: 3.5rem;
+  }
+  .details_weather_description {
+    margin-bottom: 2rem;
+  }
+  .details_weather_info_container {
+    width: 70%;
+  }
+  .detail_weather_info_img {
+    height: 40px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .details_weather_info_container {
+    width: 70%;
+  }
+  .detail_weather_info_img {
+    height: 50px;
+  }
+}
+@media screen and (min-width: 1536px) {
+  .details_weather_info_container {
+    width: 50%;
+  }
 }
