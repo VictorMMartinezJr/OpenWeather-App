@@ -27,6 +27,9 @@ const Forecast = () => {
     }
   }, [weatherForecastData]);
 
+  // Safari && IE Date bug solution
+  const fixDateForAllBrowsers = (dateString) => dateString.replace(/-/g, "/");
+
   return (
     <section id="forecast_container">
       {forecastData &&
@@ -40,7 +43,9 @@ const Forecast = () => {
               />
               <p className="forecast_card_temp">{Math.floor(day.main.temp)}°</p>
               <p className="forecast_card_day">
-                {new Date(day.dt_txt).toString().slice(0, 3)}
+                {fixDateForAllBrowsers(
+                  new Date(day.dt_txt).toString().slice(0, 3)
+                )}
               </p>
             </div>
           );
