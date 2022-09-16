@@ -4,9 +4,12 @@ export const WeatherContext = createContext();
 
 export const WeatherProvider = ({ children }) => {
   const [weatherData, setWeatherData] = useState([]);
-  const [city, setCity] = useState("atlanta");
+  const [weatherForecastData, setWeatherForecastData] = useState([]);
   const [url, setUrl] = useState(
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_API_KEY}&units=imperial`
+    `https://api.openweathermap.org/data/2.5/weather?q=atlanta&appid=${process.env.REACT_APP_API_KEY}&units=imperial`
+  );
+  const [forecastUrl, setForecastUrl] = useState(
+    `https://api.openweathermap.org/data/2.5/forecast?q=atlanta&appid=${process.env.REACT_APP_API_KEY}&units=imperial&cnt=25`
   );
   const [error, setError] = useState(false);
 
@@ -27,14 +30,39 @@ export const WeatherProvider = ({ children }) => {
       console.log(err);
     }
   };
+  /////////////////////////
+  // Fetch The Forecast //
+  ///////////////////////
+  const fetchForecast = async () => {
+    try {
+      const resp = await fetch(forecastUrl);
+      if (resp.ok) {
+        const data = await resp.json();
+        setWeatherForecastData(data);
+        error && setError(false); // Clear Error if error is active
+      } else {
+        setError(true);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
     fetchWeather();
-  }, [city, url]);
+    fetchForecast();
+  }, [url, forecastUrl]);
 
   return (
     <WeatherContext.Provider
-      value={{ weatherData, setCity, url, setUrl, error }}
+      value={{
+        weatherData,
+        weatherForecastData,
+        url,
+        setUrl,
+        setForecastUrl,
+        error,
+      }}
     >
       {children}
     </WeatherContext.Provider>

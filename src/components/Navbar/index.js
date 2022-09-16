@@ -7,7 +7,7 @@ const Navbar = () => {
   const [searchActive, setSearchActive] = useState(false);
   const [searchValue, setSearchValue] = useState("");
 
-  const { setUrl, error } = useContext(WeatherContext);
+  const { setUrl, setForecastUrl, error } = useContext(WeatherContext);
 
   ////////////////////////////////////////
   // Only Submit if "enter" was clicked //
@@ -37,6 +37,9 @@ const Navbar = () => {
     if (checkEnterClicked(e)) {
       setUrl(
         `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&appid=${process.env.REACT_APP_API_KEY}&units=imperial`
+      );
+      setForecastUrl(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&appid=${process.env.REACT_APP_API_KEY}&units=imperial&cnt=25`
       );
       setSearchActive(!error); // Close search input if valid city is inputted
       setSearchValue("");

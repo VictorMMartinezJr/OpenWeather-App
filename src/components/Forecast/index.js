@@ -1,35 +1,36 @@
 import "./Forecast.css";
 import checkWeather from "../util/CheckWeather";
-import { useEffect, useState } from "react";
+import { WeatherContext } from "../WeatherContext";
+import { useContext, useEffect, useState } from "react";
 
 const Forecast = () => {
-  const [forecast, setForecast] = useState("");
+  const [forecastData, setForecastData] = useState("");
 
-  //////////////////////////////////
-  // Fetch Forecast data from API //
-  //////////////////////////////////
-  const fetchForecast = async () => {
+  const { weatherForecastData } = useContext(WeatherContext);
+
+  const threeDays = weatherForecastData.list;
+
+  /////////////////////
+  // Set The Forecast //
+  /////////////////////
+  const setForecast = () => {
     try {
-      const res = await fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?q=atlanta&appid=${process.env.REACT_APP_API_KEY}&units=imperial&cnt=25`
+      setForecastData(
+        threeDays.filter((day) => day.dt_txt.includes("12:00:00"))
       );
-      const data = await res.json();
-      const dataList = data.list;
-      // Only get forecast for the next 3 days
-      setForecast(dataList.filter((day) => day.dt_txt.includes("12:00:00")));
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {
-    fetchForecast();
-  }, []);
+    if (weatherForecastData.length !== 0) {
+      setForecast();
+    }
+  }, [weatherForecastData]);
 
   return (
     <section id="forecast_container">
-      {forecast &&
-        forecast.map((day, i) => {
+      {forecastData &&
+        forecastData.map((day, i) => {
           return (
             <div key={i} className="forecast_card">
               <img
