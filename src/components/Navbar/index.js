@@ -38,6 +38,7 @@ const Navbar = () => {
       setUrl(
         `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&appid=${process.env.REACT_APP_API_KEY}&units=imperial`
       );
+      setSearchActive(!error); // Close search input if valid city is inputted
       setSearchValue("");
     }
   };

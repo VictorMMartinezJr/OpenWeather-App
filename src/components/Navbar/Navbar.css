@@ -69,7 +69,7 @@
 }
 
 .navbar__search__form__input:focus {
-  outline: 2px solid #000;
+  outline: 2px solid #6ecef1;
 }
 .navbar__search__form__input_error {
   display: none;
