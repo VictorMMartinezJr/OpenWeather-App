@@ -3,6 +3,7 @@ import fewCloudSVG from "../../assets/few-clouds.svg";
 import rainSVG from "../../assets/raining.svg";
 import thunderSVG from "../../assets/thunder.svg";
 import sunSVG from "../../assets/sun.svg";
+import moonSVG from "../../assets/moon.svg";
 import snowflakeSVG from "../../assets/snowflake.svg";
 
 //////////////////////////////////////////////////
@@ -29,7 +30,7 @@ const checkWeather = (code, time) => {
   }
 
   if (time && time.includes("n") && code === 800) {
-    return cloudSVG;
+    return moonSVG;
   } else {
     return sunSVG;
   }
