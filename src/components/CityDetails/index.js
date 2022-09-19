@@ -15,7 +15,7 @@ const CityDetails = () => {
   const [pressure, setPressure] = useState("");
   const [time, setTime] = useState("");
 
-  const { weatherData } = useContext(WeatherContext);
+  const { weatherData, nightTime } = useContext(WeatherContext);
 
   const capitalizeLetter = (str) => {
     return str.slice(0, 1).toUpperCase() + str.slice(1);
@@ -53,15 +53,29 @@ const CityDetails = () => {
 
   return (
     <section className="details_container">
+      {/**********
+       ** HEADER **
+       ************/}
       <div className="details_header">
-        <h1 className="details_city">{city}</h1>
-        <p className="details_weather_description">{weatherDescription}</p>
+        <h1 className={`details_city ${nightTime ? "nighttext" : ""}`}>
+          {city}
+        </h1>
+        <p
+          className={`details_weather_description ${
+            nightTime ? "nighttext" : ""
+          }`}
+        >
+          {weatherDescription}
+        </p>
         <img
           src={checkWeather(weatherCode, time)}
           alt=""
           className="details_img"
         />
       </div>
+      {/*****************
+       ** Weather Type **
+       ******************/}
       <div className="details_weather_info_container">
         <div className="detail_weather_info_container">
           <img
@@ -69,18 +83,48 @@ const CityDetails = () => {
             alt="wind icon"
             className="detail_weather_info_img"
           />
-          <p className="detail_weather_info_text">{weatherType}</p>
+          <p
+            className={`detail_weather_info_text ${
+              nightTime ? "nighttext" : ""
+            }`}
+          >
+            {weatherType}
+          </p>
         </div>
-        <p className="details_weather_info_temp">
+        {/*****************
+         ** Weather Temp **
+         ******************/}
+        <p
+          className={`details_weather_info_temp ${
+            nightTime ? "nighttext" : ""
+          }`}
+        >
           {temp}
-          <span className="degrees-icon">°</span>
+          <span className={`degrees-icon ${nightTime ? "nighttext" : ""}`}>
+            °
+          </span>
         </p>
+        {/***************
+         ** Wind Speed **
+         ****************/}
         <div className="detail_weather_info_container">
           <img src={wind} alt="wind icon" className="detail_weather_info_img" />
-          <p className="detail_weather_info_text">{windSpeed} mph</p>
+          <p
+            className={`detail_weather_info_text ${
+              nightTime ? "nighttext" : ""
+            }`}
+          >
+            {windSpeed} mph
+          </p>
         </div>
       </div>
+      {/***********************
+       ** Low/High Info Bars **
+       ************************/}
       <div className="details_weather_info_container">
+        {/*************
+         ** Humidity **
+         **************/}
         <div className="detail_weather_info_container">
           <p
             className={`detail_weather_info_indicator detail_weather_info_indicator--humidity ${
@@ -89,8 +133,17 @@ const CityDetails = () => {
           >
             {humidity <= 55 ? "Low" : "High"}
           </p>
-          <p className="detail_weather_info_text">Humidity</p>
+          <p
+            className={`detail_weather_info_text ${
+              nightTime ? "nighttext" : ""
+            }`}
+          >
+            Humidity
+          </p>
         </div>
+        {/***************
+         ** Wind Speed **
+         ****************/}
         <div className="detail_weather_info_container">
           <p
             className={`detail_weather_info_indicator detail_weather_info_indicator--humidity ${
@@ -99,8 +152,17 @@ const CityDetails = () => {
           >
             {windSpeed >= 40 ? "High" : "Low"}
           </p>
-          <p className="detail_weather_info_text">Wind Speed</p>
+          <p
+            className={`detail_weather_info_text ${
+              nightTime ? "nighttext" : ""
+            }`}
+          >
+            Wind Speed
+          </p>
         </div>
+        {/*************
+         ** Pressure **
+         **************/}
         <div className="detail_weather_info_container">
           <p
             className={`detail_weather_info_indicator detail_weather_info_indicator--humidity ${
@@ -109,7 +171,13 @@ const CityDetails = () => {
           >
             {pressure <= 30 ? "Low" : "High"}
           </p>
-          <p className="detail_weather_info_text">Pressure</p>
+          <p
+            className={`detail_weather_info_text ${
+              nightTime ? "nighttext" : ""
+            }`}
+          >
+            Pressure
+          </p>
         </div>
       </div>
     </section>

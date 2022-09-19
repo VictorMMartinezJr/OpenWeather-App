@@ -6,7 +6,7 @@ import { useContext, useEffect, useState } from "react";
 const Forecast = () => {
   const [forecastData, setForecastData] = useState("");
 
-  const { weatherForecastData } = useContext(WeatherContext);
+  const { weatherForecastData, nightTime } = useContext(WeatherContext);
 
   const threeDays = weatherForecastData.list;
 
@@ -37,7 +37,10 @@ const Forecast = () => {
             .slice(0, 3);
 
           return (
-            <div key={i} className="forecast_card">
+            <div
+              key={i}
+              className={`forecast_card ${nightTime ? "night-card" : ""}`}
+            >
               <img
                 src={checkWeather(day.weather[0].id)}
                 alt={`${day.weather[0].main} icon`}

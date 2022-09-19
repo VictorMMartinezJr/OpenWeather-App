@@ -3,5 +3,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: linear-gradient(to bottom, #c3e5f1, #fff, #c3e5f1);
+}
+.daytime {
+  background: linear-gradient(to bottom, #005c97, #363795);
+}
+.nighttime {
+  background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
 }

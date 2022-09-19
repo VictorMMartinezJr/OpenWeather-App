@@ -5,6 +5,7 @@ export const WeatherContext = createContext();
 export const WeatherProvider = ({ children }) => {
   const [weatherData, setWeatherData] = useState([]);
   const [weatherForecastData, setWeatherForecastData] = useState([]);
+  const [nightTime, setNightTime] = useState(false);
   const [url, setUrl] = useState(
     `https://api.openweathermap.org/data/2.5/weather?q=atlanta&appid=${process.env.REACT_APP_API_KEY}&units=imperial`
   );
@@ -23,6 +24,12 @@ export const WeatherProvider = ({ children }) => {
         const data = await resp.json();
         setWeatherData(data);
         error && setError(false); // Clear Error if error is active
+        // Condition to show nightime BG gradient or daytime BG gradient
+        if (data.weather[0].icon.includes("n")) {
+          setNightTime(true);
+        } else if (data.weather[0].icon.includes("d") && nightTime) {
+          setNightTime(false);
+        }
       } else {
         setError(true);
       }
@@ -58,6 +65,7 @@ export const WeatherProvider = ({ children }) => {
       value={{
         weatherData,
         weatherForecastData,
+        nightTime,
         url,
         setUrl,
         setForecastUrl,

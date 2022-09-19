@@ -6,8 +6,8 @@
   width: 90%;
 }
 .forecast_card {
-  background-color: #fff;
-  box-shadow: 0 0 15px rgb(166, 209, 226);
+  background-color: var(--white);
+  box-shadow: 0 0 10px rgb(166, 209, 226);
   height: 80px;
   width: 70px;
   border-radius: 10px;
@@ -18,7 +18,7 @@
 }
 .forecast_card_img {
   position: absolute;
-  top: -1.5rem;
+  bottom: 70%;
   left: 50%;
   transform: translateX(-50%);
   height: 50px;
@@ -33,14 +33,13 @@
   font-weight: 600;
   font-size: 0.9rem;
 }
-
 /** Media Queries **/
 @media screen and (min-width: 768px) {
   #forecast_container {
     width: 70%;
   }
   .forecast_card {
-    background-color: #fff;
+    background-color: var(--white);
     box-shadow: 0 0 15px rgb(166, 209, 226);
     height: 100px;
     width: 80px;

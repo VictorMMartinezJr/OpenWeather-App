@@ -25,7 +25,7 @@
   transform: rotate(45deg) translate(-5px, -6px);
 }
 .navbar__search__form {
-  background-color: #fff;
+  background-color: var(--white);
   height: 30px;
   width: 30px;
   border-radius: 50%;
@@ -45,7 +45,7 @@
   transform: translateY(-50%);
   border-radius: 20px;
   transition: width 0.2s ease-in-out, opacity 0.2s ease-in-out;
-  background-color: #fff;
+  background-color: var(--white);
   border: none;
 }
 .navbar__search__form__input.active {

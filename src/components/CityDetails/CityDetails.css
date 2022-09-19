@@ -13,9 +13,11 @@
 .details_city {
   font-size: 2rem;
   font-weight: 400;
+  color: var(--white);
 }
 .details_weather_description {
   margin-bottom: 1rem;
+  color: var(--white);
 }
 .details_img {
   height: 120px;
@@ -41,11 +43,13 @@
 .detail_weather_info_text {
   font-size: 0.8rem;
   font-weight: 600;
+  color: var(--white);
 }
 .details_weather_info_temp {
   font-size: 4rem;
   margin: 0 2rem 0 2rem;
   position: relative;
+  color: var(--white);
 }
 .degrees-icon {
   font-size: 2.5rem;
@@ -53,6 +57,7 @@
   top: 15px;
   right: -15px;
   font-weight: 600;
+  color: var(--white);
 }
 .detail_weather_info_indicator {
   padding: 0.2rem 0.5rem;
@@ -64,12 +69,15 @@
   margin: 1rem 0 0.5rem 0;
 }
 .detail_weather_info_indicator--humidity.low {
-  background-color: rgba(11, 127, 171, 0.2);
-  color: #0078aa;
+  background-color: #1d71f2;
+  color: #19c3fb;
 }
 .detail_weather_info_indicator--humidity.high {
   background-color: rgba(189, 155, 25, 0.2);
   color: #ecc100;
+}
+.nighttext {
+  color: var(--white);
 }
 
 /** Media Queries **/
