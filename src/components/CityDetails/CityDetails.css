@@ -73,18 +73,18 @@
   text-align: center;
   margin: 1rem 0 0.5rem 0;
 }
-.detail_weather_info_indicator--humidity.low {
-  background-color: #1d71f2;
+.detail_weather_info_indicator.low {
+  background-color: #2155cd;
   color: #19c3fb;
 }
-.detail_weather_info_indicator--humidity.high {
+.detail_weather_info_indicator.high {
   background-color: rgba(255, 212, 41, 0.397);
   color: #ecc100;
 }
-.nighttext {
+.detail_weather_info_indicator.night {
+  background-color: #3a357a;
   color: var(--white);
 }
-
 /** Media Queries **/
 @media screen and (min-width: 375px) {
   .details_city {

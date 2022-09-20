@@ -46,6 +46,8 @@ export const WeatherProvider = ({ children }) => {
       if (resp.ok) {
         const data = await resp.json();
         setWeatherForecastData(data);
+        console.log(data);
+
         error && setError(false); // Clear Error if error is active
       } else {
         setError(true);

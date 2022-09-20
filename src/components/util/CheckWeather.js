@@ -22,17 +22,15 @@ const checkWeather = (code, time) => {
   if (code >= 700 && code < 799) {
     return rainSVG;
   }
-  if (code === 801) {
-    return fewCloudSVG;
-  }
-  if (code >= 802) {
-    return cloudSVG;
-  }
-
-  if (time && time.includes("n") && code === 800) {
-    return moonSVG;
-  } else {
+  if (time && code === 800) {
+    return time.includes("n") ? moonSVG : sunSVG;
+  } else if (!time && code === 800) {
     return sunSVG;
+  }
+  if (time && code >= 801) {
+    return time.includes("n") ? cloudSVG : fewCloudSVG;
+  } else if (!time && code >= 801) {
+    return fewCloudSVG;
   }
 };
 

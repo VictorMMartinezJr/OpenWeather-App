@@ -57,16 +57,8 @@ const CityDetails = () => {
        ** HEADER **
        ************/}
       <div className="details_header">
-        <h1 className={`details_city ${nightTime ? "nighttext" : ""}`}>
-          {city}
-        </h1>
-        <p
-          className={`details_weather_description ${
-            nightTime ? "nighttext" : ""
-          }`}
-        >
-          {weatherDescription}
-        </p>
+        <h1 className="details_city">{city}</h1>
+        <p className="details_weather_description">{weatherDescription}</p>
         <img
           src={checkWeather(weatherCode, time)}
           alt=""
@@ -83,39 +75,21 @@ const CityDetails = () => {
             alt="wind icon"
             className="detail_weather_info_img"
           />
-          <p
-            className={`detail_weather_info_text ${
-              nightTime ? "nighttext" : ""
-            }`}
-          >
-            {weatherType}
-          </p>
+          <p className="detail_weather_info_text">{weatherType}</p>
         </div>
         {/*****************
          ** Weather Temp **
          ******************/}
-        <p
-          className={`details_weather_info_temp ${
-            nightTime ? "nighttext" : ""
-          }`}
-        >
+        <p className="details_weather_info_temp">
           {temp}
-          <span className={`degrees-icon ${nightTime ? "nighttext" : ""}`}>
-            °
-          </span>
+          <span className="degrees-icon">°</span>
         </p>
         {/***************
          ** Wind Speed **
          ****************/}
         <div className="detail_weather_info_container">
           <img src={wind} alt="wind icon" className="detail_weather_info_img" />
-          <p
-            className={`detail_weather_info_text ${
-              nightTime ? "nighttext" : ""
-            }`}
-          >
-            {windSpeed} mph
-          </p>
+          <p className="detail_weather_info_text">{windSpeed} mph</p>
         </div>
       </div>
       {/***********************
@@ -127,57 +101,39 @@ const CityDetails = () => {
          **************/}
         <div className="detail_weather_info_container">
           <p
-            className={`detail_weather_info_indicator detail_weather_info_indicator--humidity ${
+            className={`detail_weather_info_indicator detail_weather_info_indicator ${
               humidity <= 55 ? "low" : "high"
-            }`}
+            } ${nightTime && humidity <= 55 ? "night" : ""}`}
           >
             {humidity <= 55 ? "Low" : "High"}
           </p>
-          <p
-            className={`detail_weather_info_text ${
-              nightTime ? "nighttext" : ""
-            }`}
-          >
-            Humidity
-          </p>
+          <p className="detail_weather_info_text">Humidity</p>
         </div>
         {/***************
          ** Wind Speed **
          ****************/}
         <div className="detail_weather_info_container">
           <p
-            className={`detail_weather_info_indicator detail_weather_info_indicator--humidity ${
+            className={`detail_weather_info_indicator detail_weather_info_indicator ${
               windSpeed >= 40 ? "high" : "low"
-            }`}
+            } ${nightTime && windSpeed < 40 ? "night" : ""}`}
           >
             {windSpeed >= 40 ? "High" : "Low"}
           </p>
-          <p
-            className={`detail_weather_info_text ${
-              nightTime ? "nighttext" : ""
-            }`}
-          >
-            Wind Speed
-          </p>
+          <p className="detail_weather_info_text">Wind Speed</p>
         </div>
         {/*************
          ** Pressure **
          **************/}
         <div className="detail_weather_info_container">
           <p
-            className={`detail_weather_info_indicator detail_weather_info_indicator--humidity ${
+            className={`detail_weather_info_indicator detail_weather_info_indicator ${
               pressure <= 30 ? "low" : "high"
-            }`}
+            } ${nightTime && pressure <= 30 ? "night" : ""}`}
           >
             {pressure <= 30 ? "Low" : "High"}
           </p>
-          <p
-            className={`detail_weather_info_text ${
-              nightTime ? "nighttext" : ""
-            }`}
-          >
-            Pressure
-          </p>
+          <p className="detail_weather_info_text">Pressure</p>
         </div>
       </div>
     </section>

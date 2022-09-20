@@ -6,27 +6,23 @@
   width: 90%;
 }
 .forecast_card {
-  background-color: var(--white);
-  box-shadow: 0 0 10px rgb(166, 209, 226);
+  background-color: #2155cd;
   height: 80px;
   width: 70px;
   border-radius: 10px;
   position: relative;
   display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 .forecast_card_img {
-  position: absolute;
-  bottom: 70%;
-  left: 50%;
-  transform: translateX(-50%);
-  height: 50px;
+  height: 30px;
 }
 .forecast_card_temp {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+  font-size: 1rem;
   font-weight: 600;
+  color: var(--white);
 }
 .forecast_card_day {
   position: absolute;
@@ -36,29 +32,20 @@
   color: var(--white);
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
+.nightcard {
+  background-color: #302b63;
+}
 /** Media Queries **/
 @media screen and (min-width: 768px) {
   #forecast_container {
     width: 70%;
   }
   .forecast_card {
-    background-color: var(--white);
-    box-shadow: 0 0 15px rgb(166, 209, 226);
     height: 100px;
     width: 80px;
-    border-radius: 10px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-  }
-  .forecast_card_img {
-    top: -2.3rem;
-    height: 70px;
   }
   .forecast_card_temp {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+    font-size: 1.5rem;
   }
   .forecast_card_day {
     font-size: 1rem;

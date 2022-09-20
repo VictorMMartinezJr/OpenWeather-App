@@ -16,6 +16,7 @@ const Forecast = () => {
   const setForecast = () => {
     try {
       setForecastData(
+        // Only get 3 days from data
         threeDays.filter((day) => day.dt_txt.includes("12:00:00"))
       );
     } catch (error) {}
@@ -39,7 +40,7 @@ const Forecast = () => {
           return (
             <div
               key={i}
-              className={`forecast_card ${nightTime ? "night-card" : ""}`}
+              className={`forecast_card ${nightTime ? "nightcard" : ""}`}
             >
               <img
                 src={checkWeather(day.weather[0].id)}
