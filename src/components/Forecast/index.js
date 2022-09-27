@@ -17,9 +17,11 @@ const Forecast = () => {
     try {
       setForecastData(
         // Only get 3 days from data
-        threeDays.filter((day) => day.dt_txt.includes("12:00:00"))
+        threeDays.filter((day) => day.dt_txt.includes("18:00:00"))
       );
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
