@@ -6,7 +6,7 @@
 
 [https://weatherapp-victormtzcodes.netlify.app/](https://weatherapp-victormtzcodes.netlify.app/)
 
-![weather-app](https://user-images.githubusercontent.com/93169407/191102577-57635ba7-e6a4-4cd9-b602-1d2c040a1185.png)
+![weather-app](https://user-images.githubusercontent.com/93169407/191353653-a9b68ce6-1b20-4221-a97c-e4150f25f3a1.png)
   
 <h2>🧐 Features</h2>
 
